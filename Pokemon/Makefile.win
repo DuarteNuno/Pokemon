@@ -1,0 +1,37 @@
+# Project: Pokemon
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = mochila.o main.o jogador.o pokemon.o
+LINKOBJ  = mochila.o main.o jogador.o pokemon.o
+LIBS     = -L"C:/Users/User/programacao/Dev-Cpp/MinGW64/lib" -L"C:/Users/User/programacao/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -lwinmm
+INCS     = -I"C:/Users/User/programacao/Dev-Cpp/MinGW64/include" -I"C:/Users/User/programacao/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Users/User/programacao/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Users/User/programacao/Dev-Cpp/MinGW64/include" -I"C:/Users/User/programacao/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Users/User/programacao/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Users/User/programacao/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = Jogo_Pokemon.exe
+CXXFLAGS = $(CXXINCS) -std=c++11
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+mochila.o: mochila.cpp
+	$(CPP) -c mochila.cpp -o mochila.o $(CXXFLAGS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+jogador.o: jogador.cpp
+	$(CPP) -c jogador.cpp -o jogador.o $(CXXFLAGS)
+
+pokemon.o: pokemon.cpp
+	$(CPP) -c pokemon.cpp -o pokemon.o $(CXXFLAGS)
